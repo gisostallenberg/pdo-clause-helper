@@ -3,6 +3,7 @@
 namespace GisoStallenberg\PDOClauseHelper\Tests;
 
 use GisoStallenberg\PDOClauseHelper\ClauseHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -10,13 +11,11 @@ use PHPUnit\Framework\TestCase;
  */
 class ClauseHelperTest extends TestCase
 {
-
     /**
      * Test the to placeholder functionality
-     *
-     * @dataProvider toInClausePlaceHolderStringData
      */
-    public function testToInClausePlaceHolderString($array, $prefix = null, $expectedString, $expectedArray)
+    #[DataProvider('toInClausePlaceHolderStringData')]
+    public function testToInClausePlaceHolderString($array, $prefix, $expectedString, $expectedArray)
     {
         $binder = ClauseHelper::create();
 
@@ -33,7 +32,7 @@ class ClauseHelperTest extends TestCase
      *
      * @return array
      */
-    public function toInClausePlaceHolderStringData()
+    public static function toInClausePlaceHolderStringData()
     {
         return [
             [
